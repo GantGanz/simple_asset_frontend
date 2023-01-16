@@ -48,22 +48,22 @@ export class AssetUpdateComponent implements OnInit, OnDestroy {
         })
         this.activatedRoute.params.subscribe(result => {
             this.assetSubscription = this.assetService.getById(result['id']).subscribe(result => {
-                this.assetUpdateDto._assetId = result.assetId
-                this.assetUpdateDto._assetName = result.assetName
-                this.assetUpdateDto._serialNumber = result.serialNumber
-                this.assetUpdateDto._invoiceNumber = result.invoiceNumber
-                this.assetUpdateDto._expiredDate = result.expiredDate
-                this.assetUpdateDto._assetStatusId = result.assetStatusId
-                this.assetUpdateDto._assetStatusName = result.assetStatusName
-                this.assetUpdateDto._invoiceNumber = result.invoiceNumber
-                this.assetUpdateDto._assetTypeName = result.assetTypeName
-                this.assetUpdateDto._assetTypeId = result.assetTypeId
-                this.assetUpdateDto._companyName = result.companyName
-                this.assetUpdateDto._companyId = result.companyId
-                this.assetUpdateDto._providerName = result.providerName
-                this.assetUpdateDto._providerId = result.providerId
-                this.assetUpdateDto._isActive = result.isActive
-                this.assetUpdateDto._version = result.version
+                this.assetUpdateDto._assetId = result.data.assetId
+                this.assetUpdateDto._assetName = result.data.assetName
+                this.assetUpdateDto._serialNumber = result.data.serialNumber
+                this.assetUpdateDto._invoiceNumber = result.data.invoiceNumber
+                this.assetUpdateDto._expiredDate = result.data.expiredDate
+                this.assetUpdateDto._assetStatusId = result.data.assetStatusId
+                this.assetUpdateDto._assetStatusName = result.data.assetStatusName
+                this.assetUpdateDto._invoiceNumber = result.data.invoiceNumber
+                this.assetUpdateDto._assetTypeName = result.data.assetTypeName
+                this.assetUpdateDto._assetTypeId = result.data.assetTypeId
+                this.assetUpdateDto._companyName = result.data.companyName
+                this.assetUpdateDto._companyId = result.data.companyId
+                this.assetUpdateDto._providerName = result.data.providerName
+                this.assetUpdateDto._providerId = result.data.providerId
+                this.assetUpdateDto._isActive = result.data.isActive
+                this.assetUpdateDto._version = result.data.version
             })
         })
     }

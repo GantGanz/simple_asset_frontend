@@ -4,6 +4,7 @@ import { Observable } from "rxjs"
 import { BASE_URL } from "../constant/BaseUrl"
 import { CompaniesDto } from "../dto/company/companies.dto"
 import { CompanyDataDto } from "../dto/company/company.data.dto"
+import { CompanyDataResDto } from "../dto/company/company.data.res.dto"
 import { CompanyInsertDataResDto } from "../dto/company/company.insert.data.res.dto"
 import { CompanyInsertReqDto } from "../dto/company/company.insert.req.dto"
 import { CompanyUpdateReqDto } from "../dto/company/company.update.req.dto"
@@ -24,8 +25,8 @@ export class CompanyService {
         return this.http.post<CompanyInsertDataResDto>(`${BASE_URL}/companies`, data)
     }
 
-    getById(id: number): Observable<CompanyDataDto> {
-        return this.http.get<CompanyDataDto>(`${BASE_URL}/companies/${id}`)
+    getById(id: number): Observable<CompanyDataResDto> {
+        return this.http.get<CompanyDataResDto>(`${BASE_URL}/companies/${id}`)
     }
 
     updateCompany(data: CompanyUpdateReqDto): Observable<CompanyUpdateResDto> {

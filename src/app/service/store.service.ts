@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core"
 import { Observable } from "rxjs"
 import { BASE_URL } from "../constant/BaseUrl"
 import { StoreDataDto } from "../dto/store/store.data.dto"
+import { StoreDataResDto } from "../dto/store/store.data.res.dto"
 import { StoreInsertDataResDto } from "../dto/store/store.insert.data.res.dto"
 import { StoreInsertReqDto } from "../dto/store/store.insert.req.dto"
 import { StoreUpdateReqDto } from "../dto/store/store.update.req.dto"
@@ -24,8 +25,8 @@ export class StoreService {
         return this.http.post<StoreInsertDataResDto>(`${BASE_URL}/stores`, data)
     }
 
-    getById(id: number): Observable<StoreDataDto> {
-        return this.http.get<StoreDataDto>(`${BASE_URL}/stores/${id}`)
+    getById(id: number): Observable<StoreDataResDto> {
+        return this.http.get<StoreDataResDto>(`${BASE_URL}/stores/${id}`)
     }
 
     updateStore(data: StoreUpdateReqDto): Observable<StoreUpdateResDto> {

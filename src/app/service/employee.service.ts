@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core"
 import { Observable } from "rxjs"
 import { BASE_URL } from "../constant/BaseUrl"
 import { EmployeeDataDto } from "../dto/employee/employee.data.dto"
+import { EmployeeDataResDto } from "../dto/employee/employee.data.res.dto"
 import { EmployeeInsertDataResDto } from "../dto/employee/employee.insert.data.res.dto"
 import { EmployeeInsertReqDto } from "../dto/employee/employee.insert.req.dto"
 import { EmployeeUpdateReqDto } from "../dto/employee/employee.update.req.dto"
@@ -24,8 +25,8 @@ export class EmployeeService {
         return this.http.post<EmployeeInsertDataResDto>(`${BASE_URL}/employees`, data)
     }
 
-    getById(id: number): Observable<EmployeeDataDto> {
-        return this.http.get<EmployeeDataDto>(`${BASE_URL}/employees/${id}`)
+    getById(id: number): Observable<EmployeeDataResDto> {
+        return this.http.get<EmployeeDataResDto>(`${BASE_URL}/employees/${id}`)
     }
 
     updateEmployee(data: EmployeeUpdateReqDto): Observable<EmployeeUpdateResDto> {

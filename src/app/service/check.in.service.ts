@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http"
 import { Injectable } from "@angular/core"
 import { Observable } from "rxjs"
 import { BASE_URL } from "../constant/BaseUrl"
-import { CheckInDataDto } from "../dto/check-in/check.in.data.dto"
+import { CheckInDataResDto } from "../dto/check-in/check.in.data.res.dto"
 import { CheckInInsertDataResDto } from "../dto/check-in/check.in.insert.data.res.dto"
 import { CheckInInsertReqDto } from "../dto/check-in/check.in.insert.req.dto"
 import { CheckInsDto } from "../dto/check-in/check.ins.dto"
@@ -22,7 +22,7 @@ export class CheckInService {
         return this.http.post<CheckInInsertDataResDto>(`${BASE_URL}/check-ins`, data)
     }
 
-    getById(id: number): Observable<CheckInDataDto> {
-        return this.http.get<CheckInDataDto>(`${BASE_URL}/check-ins/${id}`)
+    getById(id: number): Observable<CheckInDataResDto> {
+        return this.http.get<CheckInDataResDto>(`${BASE_URL}/check-ins/${id}`)
     }
 }

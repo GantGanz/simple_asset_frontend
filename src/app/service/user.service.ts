@@ -3,9 +3,9 @@ import { Injectable } from "@angular/core"
 import { Observable } from "rxjs"
 import { BASE_URL } from "../constant/BaseUrl"
 import { UserDataDto } from "../dto/user/user.data.dto"
+import { UserDataResDto } from "../dto/user/user.data.res.dto"
 import { UserInsertDataResDto } from "../dto/user/user.insert.data.res.dto"
 import { UserInsertReqDto } from "../dto/user/user.insert.req.dto"
-import { UserInsertResDto } from "../dto/user/user.insert.res.dto"
 import { UserUpdatePasswordReqDto } from "../dto/user/user.update.password.req.dto"
 import { UserUpdatePasswordResDto } from "../dto/user/user.update.password.res.dto"
 import { UserUpdateReqDto } from "../dto/user/user.update.req.dto"
@@ -27,8 +27,8 @@ export class UserService {
         return this.http.post<UserInsertDataResDto>(`${BASE_URL}/users`, data)
     }
 
-    getById(id: number): Observable<UserDataDto> {
-        return this.http.get<UserDataDto>(`${BASE_URL}/users/${id}`)
+    getById(id: number): Observable<UserDataResDto> {
+        return this.http.get<UserDataResDto>(`${BASE_URL}/users/${id}`)
     }
 
     updateUser(data: UserUpdateReqDto): Observable<UserUpdateResDto> {

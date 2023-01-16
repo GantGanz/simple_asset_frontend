@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core"
 import { Observable } from "rxjs"
 import { BASE_URL } from "../constant/BaseUrl"
 import { ProviderDataDto } from "../dto/provider/provider.data.dto"
+import { ProviderDataResDto } from "../dto/provider/provider.data.res.dto"
 import { ProviderInsertDataResDto } from "../dto/provider/provider.insert.data.res.dto"
 import { ProviderInsertReqDto } from "../dto/provider/provider.insert.req.dto"
 import { ProviderUpdateReqDto } from "../dto/provider/provider.update.req.dto"
@@ -24,8 +25,8 @@ export class ProviderService {
         return this.http.post<ProviderInsertDataResDto>(`${BASE_URL}/providers`, data)
     }
 
-    getById(id: number): Observable<ProviderDataDto> {
-        return this.http.get<ProviderDataDto>(`${BASE_URL}/providers/${id}`)
+    getById(id: number): Observable<ProviderDataResDto> {
+        return this.http.get<ProviderDataResDto>(`${BASE_URL}/providers/${id}`)
     }
 
     updateProvider(data: ProviderUpdateReqDto): Observable<ProviderUpdateResDto> {

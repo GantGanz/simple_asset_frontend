@@ -20,11 +20,11 @@ export class ProfileUpdateComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         const roleCode = this.apiService.getRoleCode()
         this.userSubscription = this.userService.getById(this.apiService.getId()).subscribe(result => {
-            this.userUpdateDto._userId = result.userId
-            this.userUpdateDto._fullname = result.fullname
-            this.userUpdateDto._email = result.email
-            this.userUpdateDto._isActive = result.isActive
-            this.userUpdateDto._version = result.version
+            this.userUpdateDto._userId = result.data.userId
+            this.userUpdateDto._fullname = result.data.fullname
+            this.userUpdateDto._email = result.data.email
+            this.userUpdateDto._isActive = result.data.isActive
+            this.userUpdateDto._version = result.data.version
         })
         if (roleCode == ROLE_CODE.NA) {
             this.profileUrl = "/profile/non-admin"

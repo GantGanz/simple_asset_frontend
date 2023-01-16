@@ -17,11 +17,11 @@ export class StoreUpdateComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.activatedRoute.params.subscribe(result => {
             this.storeSubscription = this.storeService.getById(result['id']).subscribe(result => {
-                this.storeUpdateDto._storeId = result.storeId
-                this.storeUpdateDto._storeName = result.storeName
-                this.storeUpdateDto._storeCode = result.storeCode
-                this.storeUpdateDto._isActive = result.isActive
-                this.storeUpdateDto._version = result.version
+                this.storeUpdateDto._storeId = result.data.storeId
+                this.storeUpdateDto._storeName = result.data.storeName
+                this.storeUpdateDto._storeCode = result.data.storeCode
+                this.storeUpdateDto._isActive = result.data.isActive
+                this.storeUpdateDto._version = result.data.version
             })
         })
     }

@@ -21,8 +21,8 @@ export class ProfilePasswordUpdateComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         const roleCode = this.apiService.getRoleCode()
         this.userSubscription = this.userService.getById(this.apiService.getId()).subscribe(result => {
-            this.userUpdatePasswordReqDto._userId = result.userId
-            this.userUpdatePasswordReqDto._version = result.version
+            this.userUpdatePasswordReqDto._userId = result.data.userId
+            this.userUpdatePasswordReqDto._version = result.data.version
         })
         if (roleCode == ROLE_CODE.NA) {
             this.profileUrl = "/profile/non-admin"

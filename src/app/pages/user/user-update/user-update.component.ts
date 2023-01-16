@@ -17,12 +17,12 @@ export class UserUpdateComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.activatedRoute.params.subscribe(resultUrl => {
             this.userSubscription = this.userService.getById(resultUrl['id']).subscribe(result => {
-                this.userUpdateDto._userId = result.userId
-                this.userUpdateDto._fullname = result.fullname
-                this.userUpdateDto._password = result.password
-                this.userUpdateDto._email = result.email
-                this.userUpdateDto._isActive = result.isActive
-                this.userUpdateDto._version = result.version
+                this.userUpdateDto._userId = result.data.userId
+                this.userUpdateDto._fullname = result.data.fullname
+                this.userUpdateDto._password = result.data.password
+                this.userUpdateDto._email = result.data.email
+                this.userUpdateDto._isActive = result.data.isActive
+                this.userUpdateDto._version = result.data.version
             })
         })
     }

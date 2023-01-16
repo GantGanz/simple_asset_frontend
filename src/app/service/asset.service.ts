@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core"
 import { Observable } from "rxjs"
 import { BASE_URL } from "../constant/BaseUrl"
 import { AssetDataDto } from "../dto/asset/asset.data.dto"
+import { AssetDataResDto } from "../dto/asset/asset.data.res.dto"
 import { AssetInsertDataResDto } from "../dto/asset/asset.insert.data.res.dto"
 import { AssetInsertReqDto } from "../dto/asset/asset.insert.req.dto"
 import { AssetUpdateReqDto } from "../dto/asset/asset.update.req.dto"
@@ -36,8 +37,8 @@ export class AssetService {
         return this.http.post<AssetInsertDataResDto>(`${BASE_URL}/assets`, data)
     }
 
-    getById(id: number): Observable<AssetDataDto> {
-        return this.http.get<AssetDataDto>(`${BASE_URL}/assets/${id}`)
+    getById(id: number): Observable<AssetDataResDto> {
+        return this.http.get<AssetDataResDto>(`${BASE_URL}/assets/${id}`)
     }
 
     updateAsset(data: AssetUpdateReqDto): Observable<AssetUpdateResDto> {

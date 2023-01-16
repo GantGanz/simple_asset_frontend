@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http"
 import { Injectable } from "@angular/core"
 import { Observable } from "rxjs"
 import { BASE_URL } from "../constant/BaseUrl"
-import { CheckOutDataDto } from "../dto/check-out/check.out.data.dto"
+import { CheckOutDataResDto } from "../dto/check-out/check.out.data.res.dto"
 import { CheckOutInsertReqDto } from "../dto/check-out/check.out.insert.req.dto"
 import { CheckOutInsertResDto } from "../dto/check-out/check.out.insert.res.dto"
 import { CheckOutsDto } from "../dto/check-out/check.outs.dto"
@@ -22,8 +22,8 @@ export class CheckOutService {
         return this.http.get<CheckOutsDto>(`${BASE_URL}/check-outs/unchecked`)
     }
 
-    getById(id: number): Observable<CheckOutDataDto> {
-        return this.http.get<CheckOutDataDto>(`${BASE_URL}/check-outs/${id}`)
+    getById(id: number): Observable<CheckOutDataResDto> {
+        return this.http.get<CheckOutDataResDto>(`${BASE_URL}/check-outs/${id}`)
     }
 
     insertCheckOut(data: CheckOutInsertReqDto): Observable<CheckOutInsertResDto> {

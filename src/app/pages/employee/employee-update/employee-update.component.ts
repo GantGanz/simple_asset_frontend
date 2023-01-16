@@ -16,11 +16,11 @@ export class EmployeeUpdateComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.activatedRoute.params.subscribe(result => {
             this.employeeSubscription = this.employeeService.getById(result['id']).subscribe(result => {
-                this.employeeUpdateDto._employeeId = result.employeeId
-                this.employeeUpdateDto._employeeName = result.employeeName
-                this.employeeUpdateDto._employeeCode = result.employeeCode
-                this.employeeUpdateDto._isActive = result.isActive
-                this.employeeUpdateDto._version = result.version
+                this.employeeUpdateDto._employeeId = result.data.employeeId
+                this.employeeUpdateDto._employeeName = result.data.employeeName
+                this.employeeUpdateDto._employeeCode = result.data.employeeCode
+                this.employeeUpdateDto._isActive = result.data.isActive
+                this.employeeUpdateDto._version = result.data.version
             })
         })
     }

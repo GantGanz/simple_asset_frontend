@@ -24,12 +24,12 @@ export class ProviderUpdateComponent implements OnInit, OnDestroy {
         })
         this.activatedRoute.params.subscribe(result => {
             this.providerSubscription = this.providerService.getById(result['id']).subscribe(result => {
-                this.providerUpdateDto._providerId = result.providerId
-                this.providerUpdateDto._providerName = result.providerName
-                this.providerUpdateDto._providerCode = result.providerCode
-                this.providerUpdateDto._storeId = result.storeId
-                this.providerUpdateDto._isActive = result.isActive
-                this.providerUpdateDto._version = result.version
+                this.providerUpdateDto._providerId = result.data.providerId
+                this.providerUpdateDto._providerName = result.data.providerName
+                this.providerUpdateDto._providerCode = result.data.providerCode
+                this.providerUpdateDto._storeId = result.data.storeId
+                this.providerUpdateDto._isActive = result.data.isActive
+                this.providerUpdateDto._version = result.data.version
             })
         })
     }
