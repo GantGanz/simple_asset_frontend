@@ -8,8 +8,7 @@ How to run the app :
 
 How to use the app :
 - Super Admin can create stores, companies, providers, and employees. Which then can be used to create Assets.
-- Non Admin can check out the assets, and then check in the returned assets.
-
+- Non Admin can check out multiple assets, and then check in half or all of the returned assets.
 
 About the Simple Asset Management System app :
 - This is an app for managing and tracking a company's assets.
