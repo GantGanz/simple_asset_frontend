@@ -1,0 +1,44 @@
+<div class="container-fluid mt-3 mb-3 border bg-light text-dark col-9">
+    <h3 class="text-center mt-3">Add Check In</h3>
+    <form class="row" id="assetCheckInContainer" #formCheckInInsert="ngForm"
+        (ngSubmit)="formCheckInInsert.valid && submitInsert()">
+        <ng-container *ngFor="let input of inputs; index as i">
+            <div class="col-md-6">
+                <label for="asset-checkout{{ i }}" class="form-label mt-3" id="label-asset-checkin"> Asset
+                    <span class="text-danger">*</span></label>
+                <select class="form-select" aria-label="checkout-to" id="asset-checkout{{ i }}" required
+                    (change)="changeAsset(i,$event)">
+                    <option selected>(Select Asset Here)</option>
+                    <ng-container *ngFor="let c of checkOutDetailsDto.data">
+                        <option value={{c.checkOutDetailId}}>{{c.assetName}}</option>
+                    </ng-container>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="asset-status-checkin{{ i }}" class="form-label mt-3">Asset Status <span
+                        class="text-danger">*</span></label>
+                <select class="form-select" aria-label="asset status" id="asset-status-checkin
+                checkin{{ i }}" required (change)="changeStatus(i,$event)">
+                    <option selected>(Select Asset Status Here)</option>
+                    <ng-container *ngFor="let a of assetStatusesDto.data">
+                        <option value={{a.assetStatusId}}>{{a.assetStatusName}}</option>
+                    </ng-container>
+                </select>
+            </div>
+            <div class="col-md-auto">
+                <label for="" class="form-label mt-3">&nbsp;</label>
+                <button type="button" class="btn btn-danger form-control" (click)="remove(i)">Remove</button>
+            </div>
+        </ng-container>
+        <div class="my-3 text-center">
+            <button type="button" class="btn btn-primary" (click)="addForm()">Add Asset</button>
+        </div>
+        <hr>
+        <div class="d-flex mb-3 justify-content-between">
+            <button type="button" class="btn btn-secondary" id="backCheckInCheckOutBtn"
+                routerLink="/check-ins/new">BACK</button>
+            <button type="submit" class="btn btn-primary" id="submitAddCheckInBtn"
+                [disabled]="formCheckInInsert.invalid">SUBMIT</button>
+        </div>
+    </form>
+</div>

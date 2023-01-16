@@ -1,0 +1,75 @@
+<div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="photoModalLabel"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body mx-auto">
+                <img src="data:image/png;base64,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"
+                    alt="modal-pic-1" id="placeholderModal" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container text-center text-black">
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="deleteModalLabel">Alert!</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger deleteStoreBtn" data-bs-dismiss="modal"
+                        aria-label="Close" (click)="delete()">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary mt-3" type="button" id="addStoreBtn" routerLink="/stores/new">Add Store</button>
+
+    <div class="container-fluid bg-white mt-3 rounded-corner mb-3 border">
+        <hr>
+        <h2 class="text-center">Store List</h2>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">No.</th>
+                        <th scope="col">Store Name</th>
+                        <th scope="col">Store Code</th>
+                        <th scope="col">Store Photo</th>
+                        <th scope="col">Is Active</th>
+                        <th scope="col" colspan="2">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="all-accounts">
+                    <tr *ngFor="let u of storesDto.data; index as i">
+                        <td scope="col">{{ i + 1 }}</td>
+                        <td scope="col">{{ u.storeName }}</td>
+                        <td scope="col">{{ u.storeCode }}</td>
+                        <td scope="col"><img data-bs-toggle="modal" data-bs-target="#photoModal" role="button"
+                                src={{fileDownload}}{{u.fileId}} alt="store-pic" class="thumbnail"></td>
+                        <td scope="col">{{ u.isActive }}</td>
+                        <td scope="col">
+                            <button class="btn btn-primary updateStoreBtn" type="button"
+                                routerLink="/stores/edit/1">Update</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" type="button" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal" (click)="getItemId(u.storeId)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+        </div>
+    </div>
+</div>

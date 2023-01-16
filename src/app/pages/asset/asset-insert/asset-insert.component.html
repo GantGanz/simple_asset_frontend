@@ -1,0 +1,74 @@
+<div class="mt-3 container-fluid mb-3 border bg-light text-dark col-9">
+    <h3 class="text-center mt-3">Add Asset</h3>
+    <form class="row" #formAssetInsert="ngForm" (ngSubmit)="formAssetInsert.valid && submitInsert()">
+        <div class="col-md-6">
+            <label for="asset-name-asset" class="form-label mt-3">Asset Name
+                <span class="text-danger">*</span></label>
+            <input [(ngModel)]="assetInsertReqDto._assetName" name="assetName" type="text" class="form-control"
+                id="asset-name-asset" required maxlength="50">
+        </div>
+        <div class="col-md-6">
+            <label for="serial-number-asset" class="form-label mt-3">Serial Number <span
+                    class="text-danger">*</span></label>
+            <input [(ngModel)]="assetInsertReqDto._serialNumber" name="serialNumber" type="text" class="form-control"
+                id="serial-number-asset" required maxlength="5">
+        </div>
+        <div class="col-md-6">
+            <label for="invoice-number-asset" class="form-label mt-3">Invoice Number <span
+                    class="text-danger">*</span></label>
+            <input [(ngModel)]="assetInsertReqDto._invoiceNumber" name="invoiceNumber" type="text" class="form-control"
+                id="invoice-number-asset" required maxlength="5">
+        </div>
+        <div class="col-md-6">
+            <label for="expired-date-asset" class="form-label mt-3">Expired Date </label>
+            <input [(ngModel)]="assetInsertReqDto._expiredDate" name="expiredDate" type="date" class="form-control"
+                id="expired-date-asset">
+        </div>
+        <div class="col-md-6">
+            <label for="asset-type-asset" class="form-label mt-3">Asset Type <span class="text-danger">*</span></label>
+            <select [(ngModel)]="assetInsertReqDto._assetTypeId" name="assetT_assetTypeId" class="form-select"
+                aria-label="asset type" id="asset-type-asset" required>
+                <ng-container *ngFor="let u of assetTypesDto.data">
+                    <option value={{u.assetTypeId}}>{{u.assetTypeName}}</option>
+                </ng-container>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="asset-status-asset" class="form-label mt-3">Asset Status <span
+                    class="text-danger">*</span></label>
+            <select [(ngModel)]="assetInsertReqDto._assetStatusId" name="assetst_assetStatusId" class="form-select"
+                aria-label="asset status" id="asset-status-asset" required>
+                <ng-container *ngFor="let u of assetStatusesDto.data">
+                    <option value={{u.assetStatusId}}>{{u.assetStatusName}}</option>
+                </ng-container>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="provider-asset" class="form-label mt-3">Provider <span class="text-danger">*</span></label>
+            <select [(ngModel)]="assetInsertReqDto._providerId" name="priv_providerId" class="form-select"
+                aria-label="provider" id="provider-asset" required>
+                <ng-container *ngFor="let u of providersDto.data">
+                    <option value={{u.providerId}}>{{u.providerName}}</option>
+                </ng-container>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="company-asset" class="form-label mt-3">Company <span class="text-danger">*</span></label>
+            <select [(ngModel)]="assetInsertReqDto._companyId" name="com_companyId" class="form-select"
+                aria-label="company" id="company-asset" required>
+                <ng-container *ngFor="let u of companiesDto.data">
+                    <option value={{u.companyId}}>{{u.companyName}}</option>
+                </ng-container>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="photo-asset" class="form-label mt-3">Photo <span class="text-danger">*</span></label>
+            <input type="file" class="form-control" id="photo-asset" required (change)="fileUpload($event)">
+        </div>
+        <div class="d-flex mt-4 mb-3 justify-content-between">
+            <button type="button" class="btn btn-secondary" id="backAssetBtn" routerLink="/assets">BACK</button>
+            <button type="submit" class="btn btn-primary" id="submitAddAssetBtn"
+                [disabled]="formAssetInsert.invalid">SUBMIT</button>
+        </div>
+    </form>
+</div>

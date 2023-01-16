@@ -1,0 +1,64 @@
+<div class="container text-center text-black">
+    <button class="btn btn-primary mt-3" type="button" id="addCheckInBtn" routerLink="/check-ins/new">Add Check
+        In</button>
+
+    <div class="container-fluid bg-white mt-3 rounded-corner mb-3 border">
+        <hr>
+        <h2 class="text-center">Check In List</h2>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">No.</th>
+                        <th scope="col">Transaction Code</th>
+                        <th scope="col">Check Out Time</th>
+                        <th scope="col">Asset General</th>
+                        <th scope="col">Employee</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">First Time Check In</th>
+                        <th scope="col">Last Time Check In</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="all-accounts">
+                    <tr *ngFor="let c of checkInsDto.data; index as i">
+                        <td scope="col">{{ i+1 }}</td>
+                        <td scope="col">{{ c.trxCode }}</td>
+                        <td scope="col">{{ c.checkOutTime | date:'hh:mm:ss dd-MM-yyyy' }}</td>
+                        <td scope="col">
+                            <ng-container *ngIf="c.assetGeneralName; else elseBlock">
+                                {{ c.assetGeneralName }}
+                            </ng-container>
+                            <ng-template #elseBlock>-</ng-template>
+                        </td>
+                        <td scope="col">
+                            <ng-container *ngIf="c.employeeName; else elseBlock">
+                                {{ c.employeeName }}
+                            </ng-container>
+                            <ng-template #elseBlock>-</ng-template>
+                        </td>
+                        <td scope="col">
+                            <ng-container *ngIf="c.checkOutLocation; else elseBlock">
+                                {{ c.checkOutLocation }}
+                            </ng-container>
+                            <ng-template #elseBlock>-</ng-template>
+                        </td>
+                        <td scope="col">{{ c.createdAt | date:'hh:mm:ss dd-MM-yyyy' }}</td>
+                        <td scope="col">
+                            <ng-container *ngIf="c.updatedAt; else elseBlock">
+                                {{ c.updatedAt | date:'hh:mm:ss dd-MM-yyyy' }}
+                            </ng-container>
+                            <ng-template #elseBlock>-</ng-template>
+                        </td>
+                        <td scope="col">
+                            <button class="btn btn-primary seeDetailsCheckInBtn" type="button"
+                                routerLink="/check-ins/all-by-id/{{ c.checkInId }}">See Details</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+        </div>
+    </div>
+</div>

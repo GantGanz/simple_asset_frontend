@@ -1,0 +1,92 @@
+<div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="photoModalLabel"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body mx-auto">
+                <img src="https://www.lenovo.com/medias/lenovo-laptops-yoga-slim-9i-gen-7-14-intel-series.png?context=bWFzdGVyfHJvb3R8NDU4NzMzfGltYWdlL3BuZ3xoOGYvaDMwLzE0MzI0MTc4MjIzMTM0LnBuZ3wyMTgyNjA3ZTBjY2QzMDVhNDljNDk3Y2QzMTI5YzhlYjRhM2M4ZTc4NmRhZTU4YjYyYzMzN2Y4OTU3YjUwYTY1"
+                    alt="modal-pic-1" id="placeholderModal" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container text-center text-black">
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="deleteModalLabel">Alert!</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger deleteAssetBtn" data-bs-dismiss="modal"
+                        aria-label="Close" (click)="delete()">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary mt-3" type="button" id="addAssetBtn" routerLink="/assets/new">Add Asset</button>
+
+    <div class="container-fluid bg-white mt-3 rounded-corner mb-3 border">
+        <hr>
+        <h2 class="text-center">Asset List</h2>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">No.</th>
+                        <th scope="col">Asset Name</th>
+                        <th scope="col">Serial Number</th>
+                        <th scope="col">Invoice Number</th>
+                        <th scope="col">Expired Date</th>
+                        <th scope="col">Asset Type</th>
+                        <th scope="col">Asset Status</th>
+                        <th scope="col">Provider</th>
+                        <th scope="col">Company</th>
+                        <th scope="col">Photo</th>
+                        <th scope="col">Is Active</th>
+                        <th scope="col" colspan="2">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="all-accounts">
+                    <tr *ngFor="let u of assetsDto.data; index as i">
+                        <td scope="col">{{ i + 1 }}</td>
+                        <td scope="col">{{ u.assetName }}</td>
+                        <td scope="col">{{ u.serialNumber }}</td>
+                        <td scope="col">{{ u.invoiceNumber }}</td>
+                        <td scope="col">
+                            <ng-container *ngIf="u.expiredDate; else elseBlock">
+                                {{ u.expiredDate }}
+                            </ng-container>
+                            <ng-template #elseBlock>-</ng-template>
+                        </td>
+                        <td scope="col">{{ u.assetTypeName }}</td>
+                        <td scope="col">{{ u.assetStatusName }}</td>
+                        <td scope="col">{{ u.providerName }}</td>
+                        <td scope="col">{{ u.companyName }}</td>
+                        <td scope="col"><img data-bs-toggle="modal" data-bs-target="#photoModal" role="button"
+                                src={{fileDownload}}{{u.fileId}} alt="asset-pic" class="thumbnail"></td>
+                        <td scope="col">{{ u.isActive }}</td>
+                        <td scope="col">
+                            <button class="btn btn-primary updateAssetBtn" type="button"
+                                routerLink="/assets/edit/{{ u.assetId }}">Update</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" type="button" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal" (click)="getItemId(u.assetId)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+        </div>
+    </div>
+</div>

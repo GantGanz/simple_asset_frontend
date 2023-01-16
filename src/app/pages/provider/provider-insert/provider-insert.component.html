@@ -1,0 +1,35 @@
+<div class="container-fluid mt-3 mb-3 border bg-light text-dark col-9">
+    <h3 class="text-center mt-3">Add Provider</h3>
+    <form class="row" #formProviderInsert="ngForm" (ngSubmit)="formProviderInsert.valid && submitInsert()">
+        <div class="col-md-6">
+            <label for="provider-name-provider" class="form-label mt-3">Provider Name <span
+                    class="text-danger">*</span></label>
+            <input [(ngModel)]="providerInsertReqDto._providerName" name="providerName" type="text" class="form-control"
+                id="provider-name-provider" maxlength="50" required>
+        </div>
+        <div class="col-md-6">
+            <label for="provider-code-provider" class="form-label mt-3">Provider Code <span
+                    class="text-danger">*</span></label>
+            <input [(ngModel)]="providerInsertReqDto._providerCode" name="providerCode" type="text" class="form-control"
+                id="provider-code-provider" maxlength="5" required>
+        </div>
+        <div class="col-md-6">
+            <label for="store-provider" class="form-label mt-3">Store <span class="text-danger">*</span></label>
+            <select class="form-select" aria-label="store" id="store-provider" required
+                [(ngModel)]="providerInsertReqDto._storeId" name="store_storeId">
+                <ng-container *ngFor="let u of storesDto.data">
+                    <option value={{u.storeId}} selected>{{u.storeName}}</option>
+                </ng-container>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="photo-provider" class="form-label mt-3">Photo <span class="text-danger">*</span></label>
+            <input type="file" class="form-control" id="photo-provider" required (change)="fileUpload($event)">
+        </div>
+        <div class="d-flex mt-4 mb-3 justify-content-between">
+            <button type="button" class="btn btn-secondary" id="backProviderBtn" routerLink="/providers">BACK</button>
+            <button type="submit" class="btn btn-primary" id="submitAddProviderBtn"
+                [disabled]="formProviderInsert.invalid">SUBMIT</button>
+        </div>
+    </form>
+</div>

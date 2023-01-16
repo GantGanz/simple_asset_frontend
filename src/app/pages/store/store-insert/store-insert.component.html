@@ -1,0 +1,24 @@
+<div class="container-fluid mt-3 mb-3 border bg-light text-dark col-9">
+    <h3 class="text-center mt-3">Add Store</h3>
+    <form class="row" #formStoreInsert="ngForm" (ngSubmit)="formStoreInsert.valid && submitInsert()">
+        <div class="col-md-6">
+            <label for="store-name-store" class="form-label mt-3">Store Name <span class="text-danger">*</span></label>
+            <input [(ngModel)]="storeInsertReqDto._storeName" name="storeName" type="text" class="form-control"
+                id="store-name-store" maxlength="50" required>
+        </div>
+        <div class="col-md-6">
+            <label for="store-code-store" class="form-label mt-3">Store Code <span class="text-danger">*</span></label>
+            <input [(ngModel)]="storeInsertReqDto._storeCode" name="storeCode" type="text" class="form-control"
+                id="store-code-store" maxlength="5" required>
+        </div>
+        <div class="col-md-6">
+            <label for="photo-store" class="form-label mt-3">Photo <span class="text-danger">*</span></label>
+            <input type="file" class="form-control" id="photo-store" required (change)="fileUpload($event)">
+        </div>
+        <div class="d-flex mt-4 mb-3 justify-content-between">
+            <button type="button" class="btn btn-secondary" id="backStoreBtn" routerLink="/stores">BACK</button>
+            <button type="submit" class="btn btn-primary" id="submitAddStoreBtn"
+                [disabled]="formStoreInsert.invalid">SUBMIT</button>
+        </div>
+    </form>
+</div>

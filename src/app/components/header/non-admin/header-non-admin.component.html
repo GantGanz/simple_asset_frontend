@@ -1,0 +1,34 @@
+<nav class="navbar navbar-dark navbar-expand-lg bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="/dashboard/non-admin"><img
+                src="https://elcome.co.uk/ELCOME/media/Images/Logos/logo-asset-large.png?ext=.png" alt="Logo" width="60"
+                height="30"> AMS</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/dashboard/non-admin">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/check-outs">Check Out</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/check-ins">Check In</a>
+                </li>
+            </ul>
+            <div class="nav-item dropdown text-white">
+                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src={{fileDownload}}{{photoId}} alt="user-icon" width="30" height="30" class="rounded-circle">
+                    {{ fullname }}
+                </a>
+                <ul class="dropdown-menu dropdown-menu-lg-end">
+                    <li><a class="dropdown-item" routerLink="/profile/non-admin">Profile</a></li>
+                    <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

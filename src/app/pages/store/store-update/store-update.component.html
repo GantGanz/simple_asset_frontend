@@ -1,0 +1,42 @@
+<div class="container-fluid mt-3 rounded-corner mb-3 border bg-light text-dark col-9">
+    <h3 class="text-center mt-3">Update Store</h3>
+    <form class="row" #formStoreUpdate="ngForm" (ngSubmit)="formStoreUpdate.valid && saveUpdate()">
+        <div class="col-md-6">
+            <label for="store-name-store-update" class="form-label mt-3">Store Name <span
+                    class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="store-name-store-update" maxlength="50" required
+                [(ngModel)]="storeUpdateDto._storeName" name="store-name">
+        </div>
+        <div class="col-md-6">
+            <label for="store-code-store-update" class="form-label mt-3">Store Code</label>
+            <input type="text" class="form-control" id="store-code-store-update" disabled
+                [(ngModel)]="storeUpdateDto._storeCode" name="store-code">
+        </div>
+        <div class="col-md-6">
+            <label for="photo-store" class="form-label mt-3">Photo <span class="text-danger">*</span></label>
+            <input type="file" class="form-control" id="photo-store" (change)="fileUpload($event)" required>
+        </div>
+        <div class="col-md-6">
+            <label for="is-active-store-update" class="form-label mt-3">Is Active </label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="active-store" id="true-active-store" checked
+                    value="true" [(ngModel)]="storeUpdateDto._isActive" [value]="true">
+                <label class="form-check-label" for="true-active-store">
+                    Active
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="active-store" id="false-active-store" value="false"
+                    [(ngModel)]="storeUpdateDto._isActive" [value]="false">
+                <label class="form-check-label" for="false-active-store">
+                    Not Active
+                </label>
+            </div>
+        </div>
+        <div class="d-flex mt-4 mb-3 justify-content-between">
+            <button type="button" class="btn btn-secondary" id="backStoreBtn" routerLink="/stores">BACK</button>
+            <button type="submit" class="btn btn-primary" id="saveUpdateStoreBtn"
+                [disabled]="formStoreUpdate.invalid">SAVE</button>
+        </div>
+    </form>
+</div>

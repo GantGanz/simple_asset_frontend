@@ -1,0 +1,37 @@
+<div class="container-fluid mt-3 rounded-corner mb-3 border bg-light text-dark col-9">
+    <h3 class="text-center mt-3">Update Employee</h3>
+    <form class="row" #formEmployeeUpdate="ngForm" (ngSubmit)="formEmployeeUpdate.valid && saveUpdate()">
+        <div class="col-md-6">
+            <label for="employee-name-employee-update" class="form-label mt-3">Employee Name <span
+                    class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="employee-name-employee-update" maxlength="50" required
+                [(ngModel)]="employeeUpdateDto._employeeName" name="employeeName">
+        </div>
+        <div class="col-md-6">
+            <label for="employee-code-employee-update" class="form-label mt-3">Employee Code</label>
+            <input type="text" class="form-control" id="employee-code-employee-update" disabled
+                [(ngModel)]="employeeUpdateDto._employeeCode" name="employeeCode">
+        </div>
+        <div class="col-md-6">
+            <label for="is-active-employee-update" class="form-label mt-3">Is Active </label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="active-employee" id="true-active-employee" checked
+                    [(ngModel)]="employeeUpdateDto._isActive" [value]="true">
+                <label class="form-check-label" for="true-active-employee">
+                    Active
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="active-employee" id="false-active-employee"
+                    [(ngModel)]="employeeUpdateDto._isActive" [value]="false">
+                <label class="form-check-label" for="false-active-employee">
+                    Not Active
+                </label>
+            </div>
+        </div>
+        <div class="d-flex mt-4 mb-3 justify-content-between">
+            <button type="button" class="btn btn-secondary" id="backEmployeeBtn" routerLink="/employees">BACK</button>
+            <button type="submit" class="btn btn-primary" [disabled]="formEmployeeUpdate.invalid">SAVE</button>
+        </div>
+    </form>
+</div>

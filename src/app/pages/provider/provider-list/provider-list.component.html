@@ -1,0 +1,80 @@
+<div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="photoModalLabel"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body mx-auto">
+                <img src="https://images.samsung.com/is/image/samsung/assets/id/about-us/brand/logo/mo/360_197_1.png?$FB_TYPE_B_PNG$"
+                    alt="modal-pic-1" id="placeholderModal" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container text-center text-black">
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="deleteModalLabel">Alert!</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger deleteProviderBtn" data-bs-dismiss="modal"
+                        aria-label="Close" (click)="delete()">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary mt-3" type="button" id="addProviderBtn" routerLink="/providers/new">Add
+        Provider</button>
+
+    <div class="container-fluid bg-white mt-3 rounded-corner mb-3 border">
+        <hr>
+        <h2 class="text-center">Provider List</h2>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">No.</th>
+                        <th scope="col">Provider Name</th>
+                        <th scope="col">Provider Code</th>
+                        <th scope="col">Store Name</th>
+                        <th scope="col">Provider Photo</th>
+                        <th scope="col">Is Active</th>
+                        <th scope="col" colspan="2">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="all-accounts">
+                    <tr *ngFor="let u of providersDto.data; index as i">
+                        <td scope="col">{{ i + 1 }}</td>
+                        <td scope="col">{{ u.providerName }}</td>
+                        <td scope="col">{{ u.providerCode }}</td>
+                        <td scope="col">{{ u.storeName }}</td>
+                        <td scope="col"><img data-bs-toggle="modal" data-bs-target="#photoModal" role="button"
+                                src={{fileDownload}}{{u.fileId}} alt="provider-pic" class="thumbnail"></td>
+                        <td scope="col">{{ u.isActive }}</td>
+                        <td scope="col">
+                            <button class="btn btn-primary updateProviderBtn" type="button"
+                                routerLink="/providers/edit/1">Update</button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal" (click)="getItemId(u.providerId)">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="container-fluid mt-3 mb-3 border bg-light text-dark col-9">
+    <h3 class="text-center mt-3">Add Company</h3>
+    <form class="row" #formCompanyInsert="ngForm" (ngSubmit)="formCompanyInsert.valid && submitInsert()">
+        <div class="col-md-6">
+            <label for="company-name-company" class="form-label mt-3">Company Name <span
+                    class="text-danger">*</span></label>
+            <input [(ngModel)]="companyInsertReqDto._companyName" name="companyName" type="text" class="form-control"
+                id="company-name-company" maxlength="50" required>
+        </div>
+        <div class="col-md-6">
+            <label for="company-code-company" class="form-label mt-3">Company Code <span
+                    class="text-danger">*</span></label>
+            <input [(ngModel)]="companyInsertReqDto._companyCode" name="companyCode" type="text" class="form-control"
+                id="company-code-company" maxlength="5" required>
+        </div>
+        <div class="col-md-6">
+            <label for="photo-company" class="form-label mt-3">Photo <span class="text-danger">*</span></label>
+            <input type="file" class="form-control" id="photo-company" required (change)="fileUpload($event)">
+        </div>
+        <div class="d-flex mt-4 mb-3 justify-content-between">
+            <button type="button" class="btn btn-secondary" id="backCompanyBtn" routerLink="/companies">BACK</button>
+            <button type="submit" class="btn btn-primary" id="submitAddCompanyBtn"
+                [disabled]="formCompanyInsert.invalid">SUBMIT</button>
+        </div>
+    </form>
+</div>

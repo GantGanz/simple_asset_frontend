@@ -1,0 +1,92 @@
+<div class="container-fluid rounded-corner mb-3 border bg-light text-dark col-9 mt-3">
+    <h3 class="text-center mt-3">Update Asset</h3>
+    <form class="row" #formAssetUpdate="ngForm" (ngSubmit)="formAssetUpdate.valid && saveUpdate()">
+        <div class="col-md-6">
+            <label for="asset-name-asset-update" class="form-label mt-3">Asset Name <span class="text-danger">*</span>
+            </label>
+            <input type="text" class="form-control" id="asset-name-asset-update" required maxlength="50"
+                [(ngModel)]="assetUpdateDto._assetName" name="asset-name">
+        </div>
+        <div class="col-md-6">
+            <label for="serial-number-asset" class="form-label mt-3">Serial Number</label>
+            <input type="text" class="form-control" id="serial-number-asset" disabled
+                [(ngModel)]="assetUpdateDto._serialNumber" name="serial-number">
+        </div>
+        <div class="col-md-6">
+            <label for="invoice-number-asset-update" class="form-label mt-3">Invoice Number <span
+                    class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="invoice-number-asset-update" required maxlength="5"
+                [(ngModel)]="assetUpdateDto._invoiceNumber" name="invoice-number">
+        </div>
+        <div class="col-md-6">
+            <label for="expired-date-asset-update" class="form-label mt-3">Expired Date </label>
+            <input type="date" class="form-control" id="expired-date-asset-update"
+                [(ngModel)]="assetUpdateDto._expiredDate" name="expired-date">
+        </div>
+        <div class="col-md-6">
+            <label for="asset-type-asset-update" class="form-label mt-3">Asset Type <span
+                    class="text-danger">*</span></label>
+            <select class="form-select" aria-label="asset type" id="asset-type-asset-update" required
+                [(ngModel)]="assetUpdateDto._assetTypeId" name="asset-type-id">
+                <ng-container *ngFor="let s of assetTypesDto.data">
+                    <option value={{s.assetTypeId}}>{{s.assetTypeName}}</option>
+                </ng-container>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="asset-status-asset-update" class="form-label mt-3">Asset Status <span
+                    class="text-danger">*</span></label>
+            <select class="form-select" aria-label="asset status" id="asset-status-asset-update" required
+                [(ngModel)]="assetUpdateDto._assetStatusId" name="asset-status-id">
+                <ng-container *ngFor="let s of assetStatusesDto.data">
+                    <option value={{s.assetStatusId}}>{{s.assetStatusName}}</option>
+                </ng-container>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="provider-asset-update" class="form-label mt-3">Provider <span
+                    class="text-danger">*</span></label>
+            <select class="form-select" aria-label="provider" id="provider-asset-update" required
+                [(ngModel)]="assetUpdateDto._providerId" name="asset-providerId">
+                <ng-container *ngFor="let s of providersDto.data">
+                    <option value={{s.providerId}}>{{s.providerName}}</option>
+                </ng-container>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="company-asset-update" class="form-label mt-3">Company <span class="text-danger">*</span></label>
+            <select class="form-select" aria-label="company" id="company-asset-update" required
+                [(ngModel)]="assetUpdateDto._companyId" name="asset-companyId">
+                <ng-container *ngFor="let s of companiesDto.data">
+                    <option value={{s.companyId}}>{{s.companyName}}</option>
+                </ng-container>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="photo-asset-update" class="form-label mt-3">Photo <span class="text-danger">*</span></label>
+            <input type="file" class="form-control" id="photo-asset-update" required (change)="fileUpload($event)">
+        </div>
+        <div class="col-md-6">
+            <label for="is-active-asset-update" class="form-label mt-3">Is Active </label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="active-asset" id="true-active-asset" checked
+                    value="true" [(ngModel)]="assetUpdateDto._isActive" [value]="true">
+                <label class="form-check-label" for="true-active-asset">
+                    Active
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="active-asset" id="false-active-asset" value="false"
+                    [(ngModel)]="assetUpdateDto._isActive" [value]="false">
+                <label class="form-check-label" for="false-active-asset">
+                    Not Active
+                </label>
+            </div>
+        </div>
+        <div class="d-flex mt-4 mb-3 justify-content-between">
+            <button type="button" class="btn btn-secondary" id="backAssetBtn" routerLink="/assets">BACK</button>
+            <button type="submit" class="btn btn-primary" id="saveUpdateAssetBtn"
+                [disabled]="formAssetUpdate.invalid">SAVE</button>
+        </div>
+    </form>
+</div>

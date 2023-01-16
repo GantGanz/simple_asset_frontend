@@ -1,0 +1,60 @@
+<div class="container text-center text-black">
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="deleteModalLabel">Alert!</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger deleteEmployeeBtn" data-bs-dismiss="modal"
+                        aria-label="Close" (click)="delete()">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary mt-3" type="button" id="addEmployeeBtn" routerLink="/employees/new">Add
+        Employee</button>
+
+    <div class="container-fluid bg-white mt-3 rounded-corner mb-3 border">
+        <hr>
+        <h2 class="text-center">Employee List</h2>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">No.</th>
+                        <th scope="col">Employee Name</th>
+                        <th scope="col">Employee Code</th>
+                        <th scope="col">Is Active</th>
+                        <th scope="col" colspan="2">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="all-accounts">
+                    <tr *ngFor="let u of employeesDto.data; index as i">
+                        <td scope="col">{{ i + 1 }}</td>
+                        <td scope="col">{{ u.employeeName }}</td>
+                        <td scope="col">{{ u.employeeCode }}</td>
+                        <td scope="col">{{ u.isActive }}</td>
+                        <td scope="col">
+                            <button class="btn btn-primary updateEmployeeBtn" type="button"
+                                routerLink="/employees/edit/{{ u.employeeId }}">Update</button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal" (click)="getItemId(u.employeeId)">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+        </div>
+    </div>
+</div>

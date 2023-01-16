@@ -1,0 +1,41 @@
+<div class="container-fluid mt-3 rounded-corner mb-3 border bg-light text-dark col-9">
+    <h3 class="text-center mt-3">Update Company</h3>
+    <form class="row" #formCompanyUpdate="ngForm" (ngSubmit)="formCompanyUpdate.valid && saveUpdate()">
+        <div class="col-md-6">
+            <label for="company-name-company-update" class="form-label mt-3">Company Name <span
+                    class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="company-name-company-update" maxlength="50" required
+                [(ngModel)]="companyUpdateDto._companyName" name="company-name">
+        </div>
+        <div class="col-md-6">
+            <label for="company-code-company-update" class="form-label mt-3">Company Code</label>
+            <input type="text" class="form-control" id="company-code-company-update" disabled
+                [(ngModel)]="companyUpdateDto._companyCode" name="company-code">
+        </div>
+        <div class="col-md-6">
+            <label for="photo-company" class="form-label mt-3">Photo <span class="text-danger">*</span></label>
+            <input type="file" class="form-control" id="photo-company" (change)="fileUpload($event)" required>
+        </div>
+        <div class="col-md-6">
+            <label for="is-active-company-update" class="form-label mt-3">Is Active </label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="active-company" id="true-active-company" checked
+                    value="true" [(ngModel)]="companyUpdateDto._isActive" [value]="true">
+                <label class="form-check-label" for="true-active-company">
+                    Active
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="active-company" id="false-active-company"
+                    value="false" [(ngModel)]="companyUpdateDto._isActive" [value]="false">
+                <label class="form-check-label" for="false-active-company">
+                    Not Active
+                </label>
+            </div>
+        </div>
+        <div class="d-flex mt-4 mb-3 justify-content-between">
+            <button type="button" class="btn btn-secondary" id="backCompanyBtn" routerLink="/companies">BACK</button>
+            <button type="submit" class="btn btn-primary" [disabled]="formCompanyUpdate.invalid">SAVE</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,22 @@
+<div class="container-fluid mt-3 mb-3 border bg-light text-dark col-9">
+    <h3 class="text-center mt-3">Add Employee</h3>
+    <form class="row" #formEmployeeInsert="ngForm" (ngSubmit)="formEmployeeInsert.valid && submitInsert()">
+        <div class="col-md-6">
+            <label for="employee-name-employee" class="form-label mt-3">Employee Name <span
+                    class="text-danger">*</span></label>
+            <input [(ngModel)]="employeeInsertReqDto._employeeName" name="employeeName" type="text" class="form-control"
+                id="employee-name-employee" maxlength="50" required>
+        </div>
+        <div class="col-md-6">
+            <label for="employee-code-employee" class="form-label mt-3">Employee Code <span
+                    class="text-danger">*</span></label>
+            <input [(ngModel)]="employeeInsertReqDto._employeeCode" name="employeeCode" type="text" class="form-control"
+                id="employee-code-employee" maxlength="5" required>
+        </div>
+        <div class="d-flex mt-4 mb-3 justify-content-between">
+            <button type="button" class="btn btn-secondary" id="backEmployeeBtn" routerLink="/employees">BACK</button>
+            <button type="submit" class="btn btn-primary" id="submitAddEmployeeBtn"
+                [disabled]="formEmployeeInsert.invalid">SUBMIT</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,20 @@
+<div class="container-fluid text-black col-sm-10 col-md-7 text-center bg-light pt-3 pb-3 mt-3">
+    <hr>
+    <div class="account-details">
+        <div class="pb-3" id="user-photo">
+            <img class="img-thumbnail rounded-circle" src={{fileDownload}}{{photoId}} alt="user-photo" loading="lazy"
+                width="250" height="250">
+        </div>
+        <h2>{{ fullname }}</h2>
+        <h4>{{ email }}</h4>
+    </div>
+    <hr>
+    <div class="d-flex mt-4 mb-3 justify-content-between">
+        <button class="btn btn-primary" type="button" id="updatePasswordBtn"
+            routerLink="/profile/{{ roleName }}/edit-password">UPDATE
+            PASSWORD</button>
+        <button class=" btn btn-primary" type="button" id="updateProfileBtn"
+            routerLink="/profile/{{ roleName }}/edit">UPDATE
+            PROFILE</button>
+    </div>
+</div>

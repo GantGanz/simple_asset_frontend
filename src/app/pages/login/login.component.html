@@ -1,0 +1,21 @@
+<div class="text-bg-primary bg-opacity-75">
+    <div class="container">
+        <div class="d-flex vh-100 align-items-center">
+            <div class="container border bg-light text-dark col-7">
+                <h3 class="text-center mt-3">Asset Management System</h3>
+                <form #formUser="ngForm" (ngSubmit)="formUser.valid && submit()">
+                    <label for="email-login" class="form-label mt-3">Masukkan Email (Username)</label>
+                    <input type="email" class="form-control" id="email-login" placeholder="contoh@gmail.com"
+                        [(ngModel)]="loginReqDto._email" name="email" required>
+                    <label for="password-login" class="form-label mt-3">Masukkan Password</label>
+                    <input type="password" class="form-control" id="password-login" [(ngModel)]="loginReqDto._password"
+                        name="password" required>
+                    <div class="text-end">
+                        <button class="btn btn-primary mt-3 mb-3" [disabled]="formUser.invalid"
+                            type="submit">SUBMIT</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

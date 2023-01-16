@@ -1,0 +1,36 @@
+<div class="container text-center text-black">
+
+    <button type="button" class="btn btn-secondary mt-3" id="backCheckOutBtn" routerLink="/check-outs">BACK</button>
+
+    <div class="container-fluid bg-white mt-3 rounded-corner mb-3 border">
+        <hr>
+        <h2 class="text-center">Check Out Detail List</h2>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">No.</th>
+                        <th scope="col">Transaction Code</th>
+                        <th scope="col">Return Date</th>
+                        <th scope="col">Asset Name</th>
+                    </tr>
+                </thead>
+                <tbody class="all-accounts">
+                    <tr *ngFor="let c of checkOutDetailsDto.data; index as i">
+                        <td scope="col">{{ i+1 }}</td>
+                        <td scope="col">{{ c.trxCode }}</td>
+                        <td scope="col">
+                            <ng-container *ngIf="c.returnDate; else elseBlock">
+                                {{ c.returnDate | date:'dd-MM-yyyy' }}
+                            </ng-container>
+                            <ng-template #elseBlock>-</ng-template>
+                        </td>
+                        <td scope="col">{{ c.assetName }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+        </div>
+    </div>
+</div>
