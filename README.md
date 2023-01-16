@@ -2,5 +2,6 @@
 (Follow the backend steps first)
 
 How to run the app :
-
-Run 'npm instll' 'ng serve' then navigate to `http://localhost:4200/`.
+- Run 'npm install'.
+- Run 'ng serve'.
+- Open `http://localhost:4200/` in a browser.
