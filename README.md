@@ -1,5 +1,5 @@
 # Simple Asset Management System
-(Follow the backend steps first)
+(Follow the backend steps first, not all of the APIs are implemented yet)
 
 How to run the app :
 - Run 'npm install'.
